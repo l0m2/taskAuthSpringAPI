@@ -28,8 +28,9 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/task").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/task/{UserId}").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/task/all").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/task").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/task/{UserId}").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

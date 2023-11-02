@@ -46,4 +46,9 @@ public class TaskController {
         List<TaskModel> tasks = taskServices.findAllByUserId(userId);
         return ResponseEntity.ok(tasks);
     }
+
+    @GetMapping("/all")
+    public  ResponseEntity<List<TaskModel>> listAllTask(){
+        return ResponseEntity.ok(taskServices.findAll());
+    }
 }

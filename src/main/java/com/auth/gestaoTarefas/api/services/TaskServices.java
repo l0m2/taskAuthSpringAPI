@@ -25,6 +25,9 @@ public class TaskServices {
         return taskRepository.findAllByuserid(userId);
     }
 
+    public List<TaskModel>findAll(){
+        return taskRepository.findAll();
+    }
     @Transactional
     public TaskModel save(TaskModel taskModel){
         return taskRepository.save(taskModel);
